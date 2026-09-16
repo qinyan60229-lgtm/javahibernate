@@ -1,5 +1,7 @@
 package tw.brad.hibernate.tutor;
 
+import java.util.Scanner;
+
 import org.mindrot.jbcrypt.BCrypt;
 
 import jakarta.persistence.EntityManager;
@@ -7,29 +9,22 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import tw.brad.hibernate.entity.Account;
 
-public class Brad03 {
+public class Brad06 {
 
 	public static void main(String[] args) {
 		EntityManagerFactory emf =
 				Persistence.createEntityManagerFactory("brad");
-		
 		EntityManager em = emf.createEntityManager();
-//		System.out.println("OK");
-		em.getTransaction().begin();
 		
-		Account account = em.find(Account.class, 1);
-		System.out.println(account.getId());
-		System.out.println(account.getEmail());
+		// JPQL
+		Account account = em.createQuery(
+								"SELECT a FROM Account a WHERE a.email= :email", Account.class)
+								.setParameter("email", "brad@brad.tw")
+								.getSingleResult();
 		System.out.println(account.getName());
-		account.setPasswd(BCrypt.hashpw("12345678", BCrypt.gensalt()));
-		
-		account.setName("Brad");
-		
-		em.getTransaction().commit(); // ★ 把交易結束
 		
 		em.close();
 		emf.close();
-
 	}
 
 }
