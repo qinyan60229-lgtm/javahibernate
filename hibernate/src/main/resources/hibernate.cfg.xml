@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-configuration>
+	<session-factory>
+		<propert name="connection.driver_class">com.mysql.cj.jdbc.Driver</propert>
+		<propert name="connection.url">jdbc:mysql://localhost:3306/brad</propert>
+		<propert name="connection.username">root</propert>
+		<propert name="connection.password">root</propert>
+		
+		<propert name="hibernate.show_sql">true</propert>
+		<propert name="hibernate.format_sql">true</propert>
+		
+		<mapping class="tw.brad.hibernate.entity.Account"></mapping>
+	</session-factory>
+</hibernate-configuration>
