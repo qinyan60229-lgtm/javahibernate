@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import jakarta.persistence.Id;
 import tw.brad.hibernate.entity.Account;
 
-public class Brad0 {
+public class Brad07 {
 
 	public static void main(String[] args) {
 		Class<Account> aClass = Account.class;
