@@ -2,11 +2,13 @@ package tw.brad.hibernate.entity;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +28,7 @@ public class Account {
 	private String passwd;
 	private LocalDate birthday;
 	private Boolean enable;
+	
 	
 	public Integer getId() {
 		return id;
@@ -63,8 +66,19 @@ public class Account {
 	public void setEnable(Boolean enable) {
 		this.enable = enable;
 	}
-	
-	
-	
+	//--------------------------
+	@OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+	private AccountInfo accountinfo;
 
+
+	public AccountInfo getAccountinfo() {
+		return accountinfo;
+	}
+	public void setAccountinfo(AccountInfo accountinfo) {
+		this.accountinfo = accountinfo;
+	}
+	
+	
+	
+	
 }

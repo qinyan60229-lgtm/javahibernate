@@ -1,7 +1,5 @@
 package tw.brad.hibernate.tutor;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
@@ -14,10 +12,15 @@ public class Brad08 {
 			Transaction transaction = session.beginTransaction();
 
 			String sql = """
-					SELECT * FROM account
+					INSERT INTO cust
+						(cname, tel, birthday)
+					VALUES
+						(:cname, :tel, :birth)
 					""";
 			NativeQuery query = session.createNativeQuery(sql);
-			List list = query.getResultList();
+			query.setParameter("cname", "test1");
+			query.setParameter("tel", "123");
+			query.setParameter("birth", "1999-01-02");
 			
 			int n = query.executeUpdate();
 			System.out.println(n);
