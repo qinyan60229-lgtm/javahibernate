@@ -8,24 +8,21 @@ import tw.brad.hibernate.entity.Account;
 public class Brad02 {
 
 	public static void main(String[] args) {
-		EntityManagerFactory emf =
+		try (EntityManagerFactory emf = 
 				Persistence.createEntityManagerFactory("brad");
-		
-		EntityManager em = emf.createEntityManager();
-//		System.out.println("OK");
-		em.getTransaction().begin();
-		
-		Account account = new Account();
-		account.setName("mike");
-		account.setEmail("mike@brad.tw");
-		
-		em.persist(account);
-		
-		em.getTransaction().commit();
-		
-		em.close();
-		emf.close();
+			EntityManager em = emf.createEntityManager();) {
+//			System.out.println("OK");
+			em.getTransaction().begin();
 
+			Account account = new Account();
+			account.setName("mike");
+			account.setEmail("mike@brad.tw");
+
+			em.persist(account);
+
+			em.getTransaction().commit();
+
+		}
 	}
 
 }

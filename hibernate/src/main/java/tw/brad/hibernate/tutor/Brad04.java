@@ -14,7 +14,6 @@ public class Brad04 {
 	public static void main(String[] args) {
 		EntityManagerFactory emf =
 				Persistence.createEntityManagerFactory("brad");
-		
 		EntityManager em = emf.createEntityManager();
 //		System.out.println("OK");
 		em.getTransaction().begin();
