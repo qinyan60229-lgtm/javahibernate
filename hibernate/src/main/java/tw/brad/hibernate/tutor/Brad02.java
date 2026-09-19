@@ -14,7 +14,7 @@ public class Brad02 {
 //			System.out.println("OK");
 			em.getTransaction().begin();
 
-			Account account = new Account();
+			Account account = new Account(); 
 			account.setName("mike");
 			account.setEmail("mike@brad.tw");
 
@@ -24,5 +24,4 @@ public class Brad02 {
 
 		}
 	}
-
 }
