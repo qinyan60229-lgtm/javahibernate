@@ -14,11 +14,10 @@ import jakarta.persistence.Table;
 @Table(name = "orderdetails")
 @IdClass(OrderDetailPK.class)
 public class OrderDetail {
-	
 	@Id
 	@Column(name = "OrderID")
 	private int orderId;
-	
+
 	@Id
 	@Column(name = "ProductID")
 	private int productId;
@@ -84,6 +83,8 @@ public class OrderDetail {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+	
+	
 	
 	
 }
