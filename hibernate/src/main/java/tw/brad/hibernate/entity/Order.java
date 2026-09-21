@@ -7,6 +7,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +25,7 @@ public class Order {
 	private String customer;
 	
 	@Column(name ="odate", nullable = false)
-	private LocalDate odate;
+	private LocalDate odate = LocalDate.now();
 	
 	public long getId() {
 		return id;
@@ -46,6 +47,7 @@ public class Order {
 	}
 	//----------------------------
 	@OneToMany(mappedBy = "order", 
+			fetch = FetchType.EAGER,
 				cascade = CascadeType.ALL,
 				orphanRemoval = true)
 	private List<OrderItem> items = new ArrayList<>();
